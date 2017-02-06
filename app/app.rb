@@ -21,10 +21,8 @@ class Server < Sinatra::Base
   	@user = User.create(email: params[:email],
                  name: params[:name],
                  username: params[:username],
-                 password: params[:password],
-                 password_confirm: params[:password_confirm])
-
-  end
+                 password: params[:password])
+    end
 
   run! if app_file == $0
 end

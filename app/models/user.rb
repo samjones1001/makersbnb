@@ -3,11 +3,6 @@ require 'bcrypt'
 class User
   include DataMapper::Resource
 
-  attr_reader :password
-  attr_accessor :password_confirm
-
-  validates_confirmation_of :password
-  validates_format_of :email, as: :email_address
 
   has n, :bookings
   has n, :spaces
