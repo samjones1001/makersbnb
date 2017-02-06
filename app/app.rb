@@ -9,7 +9,7 @@ class Server < Sinatra::Base
   set :session_secret, 'super secret'
 
   get '/' do
-    'Hello'
+    redirect'/users/new'
   end
 
   get '/users/new' do
@@ -21,8 +21,10 @@ class Server < Sinatra::Base
   	@user = User.create(email: params[:email],
                  name: params[:name],
                  username: params[:username],
-                 password: params[:password])
-    end
+                 password: params[:password],
+                 password_confirm: params[:password_confirm])
+  	redirect to('/')
+  end
 
-  run! if app_file == $0
+   run! if app_file == $0
 end

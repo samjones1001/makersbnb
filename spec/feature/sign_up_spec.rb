@@ -13,4 +13,12 @@ feature 'User sign up' do
 		expect(User.first.email).to eq 'test@email.com'
 	end
 
+	scenario 'Will not accept mismatched passwords' do
+
+      expect { sign_up(password_confirm: 'rubbish') }.not_to change(User,:count)
+      expect(current_path).to eq('/users')
+      expect(page).to have_content 'Password does not match the confirmation'
+
+  end
+
 end
