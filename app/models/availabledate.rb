@@ -1,4 +1,4 @@
-class AvailableDate
+class Availabledate
   include DataMapper::Resource
   # storage_names[:default] = 'availableDate'
 

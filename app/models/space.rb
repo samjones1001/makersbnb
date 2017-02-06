@@ -4,7 +4,7 @@ class Space
 
   has n,     :bookings
   belongs_to :user,          required: true
-  # has n      :availabledate,  required: true
+  has n,     :availabledates
 
   property :id,               Serial
   property :name,             String, required: true
