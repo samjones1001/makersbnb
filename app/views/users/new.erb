@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up</title>
+</head>
+<body>
+
+<h1>Please sign up for a MakersBnB account</h1>
+
+<form action='/users' method='post'>
+  <label for='name'>
+    Full Name: <input name='name' type='text' value='<%= @user.name %>'>
+  </label>
+  <label for='email'>
+    Email: <input name='email' type='text' value='<%= @user.email %>'>
+  </label>
+   <label for='username'>
+    User Name: <input name='username' type='text' value='<%= @user.username %>'>
+  </label>
+  <label for='password'>
+    User Name: <input name='password' type='text'>
+  </label>
+  <label for='password_confirm'>
+    User Name: <input name='password_confirm' type='text'>
+  </label>
+  <input type='submit' value='Sign Up!'
+</form>
+
+</body>
+</html>
