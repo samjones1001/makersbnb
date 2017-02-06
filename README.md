@@ -34,6 +34,6 @@ So that I can manage hire requests
 I want a posting to remain available until I confirm a hire request 
 ```
 
-
-
+# Database Schema
+[![DatabaseSchema](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png "Database Chema")
 
