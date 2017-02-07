@@ -11,7 +11,7 @@ class Server < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    redirect to('/users/new')
+    
   end
 
   get '/users/new' do
@@ -32,10 +32,6 @@ class Server < Sinatra::Base
   		flash.now[:errors] = @user.errors.full_messages
   		erb :'users/new'
   	end
-  end
-
-  get '/users/test' do
-  	erb :'users/test'
   end
 
   helpers do

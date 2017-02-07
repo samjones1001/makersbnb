@@ -4,7 +4,7 @@ class Booking
 
   belongs_to :user,          required: true
   belongs_to :space,          required: true
-  # belongs_to :availabledate,  required: true
+  has n, :availabledates
 
   property :id,               Serial
   property :hired,            Boolean,  required: true
