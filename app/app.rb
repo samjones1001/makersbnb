@@ -3,23 +3,16 @@ ENV['RACK_ENV'] ||= "development"
 require 'sinatra/base'
 require 'sinatra/flash'
 require_relative 'data_mapper_setup'
+require_relative 'helpers'
 
 class Server < Sinatra::Base
 
+
+  helpers Helpers
   enable :sessions
   set :session_secret, 'super secret'
   register Sinatra::Flash
   use Rack::MethodOverride
-
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
-    
-      def format_date(date)
-      DateTime.parse(date).strftime('%d-%m-%Y')
-    end
-  end
 
   get '/' do
     erb :index
@@ -84,7 +77,7 @@ class Server < Sinatra::Base
     else
       erb(:'/spaces/new')
     end
-    
+
   end
 
   get '/sessions/new' do
@@ -105,7 +98,7 @@ class Server < Sinatra::Base
   delete '/sessions' do
     session[:user_id] = nil
     redirect to 'sessions/new'
-  end 
+  end
 
   run! if app_file == $0
 end
