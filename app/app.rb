@@ -105,14 +105,7 @@ class Server < Sinatra::Base
   delete '/sessions' do
     session[:user_id] = nil
     redirect to 'sessions/new'
-  end
-
-
-
-    def format_date(date)
-      DateTime.parse(date).strftime('%d-%m-%Y')
-    end
-  end
+  end 
 
   run! if app_file == $0
 end
