@@ -6,6 +6,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
+require_relative 'helpers/session'
 
 Capybara.app = Server
 
@@ -31,4 +32,7 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  config.include SessionHelpers
+  
 end

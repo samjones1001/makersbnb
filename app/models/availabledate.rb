@@ -1,4 +1,4 @@
-class AvailableDate
+class Availabledate
   include DataMapper::Resource
 
   belongs_to :booking,        required: true
