@@ -1,6 +1,5 @@
 class Space
   include DataMapper::Resource
-  # storage_names[:default] = 'space'
 
   has n,     :bookings
   belongs_to :user,          required: true

@@ -1,6 +1,5 @@
 class Availabledate
   include DataMapper::Resource
-  # storage_names[:default] = 'availableDate'
 
   belongs_to :booking,        required: true
   belongs_to :space,          required: true
