@@ -6,8 +6,15 @@
 </head>
 
 <body>
+  
   <% if current_user %>
     Welcome to MakersBnB, <%= current_user.username %>
+
+    <form action='/sessions' method='post'>
+      <input type='hidden' name='_method' value='delete'>
+      <input type='submit' value='Sign Out!'>
+    </form>
+    
   <% end %>
  
   <% if flash[:errors] && !flash[:errors].empty? %>
