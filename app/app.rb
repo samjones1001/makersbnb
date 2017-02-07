@@ -11,7 +11,11 @@ class Server < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    
+    erb :index
+  end
+
+  post '/spaces/search' do
+    erb :'/spaces/index'
   end
 
   get '/users/new' do
