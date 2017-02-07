@@ -11,12 +11,18 @@ class Server < Sinatra::Base
   register Sinatra::Flash
   use Rack::MethodOverride
 
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
+  end
+
   get '/' do
     erb :index
+
   end
 
   post '/spaces/search' do
-    @space = Space.create(name: "Space 1", description: "First Space", price_per_night: 45.00, user_id: 1)
     @start_date = format_date(params[:start_date])
     @end_date = format_date(params[:end_date])
     @spaces = Space.all
@@ -41,11 +47,40 @@ class Server < Sinatra::Base
                  password_confirmation: params[:password_confirmation])
   	if @user.save
   		session[:user_id] = @user.id
-  		redirect to('/users/new')
+  		redirect to('/')
+
   	else
   		flash.now[:errors] = @user.errors.full_messages
   		erb :'users/new'
   	end
+  end
+
+
+  get '/spaces/new' do
+    erb(:'/spaces/new')
+  end
+
+  post '/spaces' do
+    @space = Space.create(
+    name: params[:name],
+    description: params[:description],
+    price_per_night: params[:price_per_night],
+    image: params[:image], user_id: current_user.id)
+
+    date_from  = Date.parse(params[:available_from])
+    date_to  = Date.parse(params[:available_to])
+    date_array = (date_from..date_to)
+
+    date_array.each do |i|
+      Availabledate.create(date: i, available: true, space_id: @space.id)
+    end
+
+    if @space.save
+      redirect to('/')
+    else
+      erb(:'/spaces/new')
+    end
+    
   end
 
   get '/sessions/new' do
@@ -68,10 +103,7 @@ class Server < Sinatra::Base
     redirect to 'sessions/new'
   end
 
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
+
 
     def format_date(date)
       DateTime.parse(date).strftime('%d-%m-%Y')

@@ -1,9 +1,9 @@
 class Booking
   include DataMapper::Resource
 
-  belongs_to :user,          required: true
+  belongs_to :user,           required: true
   belongs_to :space,          required: true
-  has n, :availabledates
+  has n,  :availabledates
 
 
   property :id,               Serial

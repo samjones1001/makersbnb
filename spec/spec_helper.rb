@@ -6,7 +6,9 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
+require 'feature/web_helpers'
 require_relative 'helpers/session'
+
 
 Capybara.app = Server
 
