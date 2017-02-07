@@ -1,6 +1,6 @@
 class AvailableDate
   include DataMapper::Resource
-  
+
   belongs_to :booking,        required: true
   belongs_to :space,          required: true
 

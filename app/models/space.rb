@@ -1,6 +1,6 @@
 class Space
   include DataMapper::Resource
-  
+
   has n,     :bookings
   belongs_to :user,          required: true
   has n,     :availabledates
