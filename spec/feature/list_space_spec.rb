@@ -4,7 +4,7 @@ feature "Listing space" do
 
     sign_up
     expect { new_listing }.to change(Space, :count).by(1)
-    expect(page).to have_content "hello"
+  
 
   end
 
