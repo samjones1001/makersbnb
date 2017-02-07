@@ -11,3 +11,20 @@
   </label>
   <input type="submit" value="Show Spaces">
 </form>
+
+
+<% if @spaces %>
+  <h1> Available Spaces </h1>
+
+  Searching for spaces on the dates <br>
+  <%= @start_date %> to <%= @end_date %><br>
+  <% @spaces.each do |space| %>
+    <%= space.name %><br>
+    <%= space.description %><br>
+    £<%= '%.2f' % space.price_per_night %><br><br>
+    <form action='/spaces/?request=<%=space.id%>'>
+      <input type='hidden' id='request' name='request' value='<%=space.id%>'>
+      <input type="submit" name="submit" value="request booking">
+    </form>
+  <% end %>
+<% end %>

@@ -16,7 +16,16 @@ class Server < Sinatra::Base
   end
 
   post '/spaces/search' do
-    erb :'/spaces/index'
+    @space = Space.create(name: "Space 1", description: "First Space", price_per_night: 45.00, user_id: 1)
+    @start_date = format_date(params[:start_date])
+    @end_date = format_date(params[:end_date])
+    @spaces = Space.all
+    erb :index
+  end
+
+  get '/spaces/' do
+    @request_id = params[:request].to_i
+    erb :'spaces/query'
   end
 
   get '/users/new' do
@@ -62,6 +71,10 @@ class Server < Sinatra::Base
   helpers do
     def current_user
       @current_user ||= User.get(session[:user_id])
+    end
+
+    def format_date(date)
+      DateTime.parse(date).strftime('%d-%m-%Y')
     end
   end
 
