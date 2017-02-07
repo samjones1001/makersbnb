@@ -10,8 +10,14 @@ class Server < Sinatra::Base
   set :session_secret, 'super secret'
   register Sinatra::Flash
 
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
+  end
+
   get '/' do
-    "hello"
+    erb :index
   end
 
   get '/users/new' do
@@ -27,17 +33,11 @@ class Server < Sinatra::Base
                  password_confirmation: params[:password_confirmation])
   	if @user.save
   		session[:user_id] = @user.id
-  		redirect to('/users/test')
+  		redirect to('/')
   	else
   		flash.now[:errors] = @user.errors.full_messages
   		erb :'users/new'
   	end
-  end
-
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
   end
 
   get '/spaces/new' do
@@ -49,7 +49,15 @@ class Server < Sinatra::Base
     name: params[:name],
     description: params[:description],
     price_per_night: params[:price_per_night],
-    image: params[:image])
+    image: params[:image], user_id: current_user.id)
+
+    date_from  = Date.parse(params[:available_from])
+    date_to  = Date.parse(params[:available_to])
+    date_array = (date_from..date_to)
+
+    date_array.each do |i|
+      Availabledate.create(date: i, available: true, space_id: @space.id)
+    end
 
     if @space.save
       redirect to('/')
