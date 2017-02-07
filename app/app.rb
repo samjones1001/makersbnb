@@ -23,6 +23,19 @@ class Server < Sinatra::Base
 
   get '/' do
     erb :index
+
+  end
+
+  post '/spaces/search' do
+    @start_date = format_date(params[:start_date])
+    @end_date = format_date(params[:end_date])
+    @spaces = Space.all
+    erb :index
+  end
+
+  get '/spaces/' do
+    @request_id = params[:request].to_i
+    erb :'spaces/query'
   end
 
   get '/users/new' do
@@ -92,6 +105,13 @@ class Server < Sinatra::Base
   delete '/sessions' do
     session[:user_id] = nil
     redirect to 'sessions/new'
+  end
+
+
+
+    def format_date(date)
+      DateTime.parse(date).strftime('%d-%m-%Y')
+    end
   end
 
   run! if app_file == $0
