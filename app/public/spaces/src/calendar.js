@@ -10,23 +10,23 @@ $(window).load(function()
 	$('#example2').glDatePicker(
 	{
 		showAlways: true,
-		allowMonthSelect: false,
-		allowYearSelect: false,
+		allowMonthSelect: true,
+		allowYearSelect: true,
 		prevArrow: '',
 		nextArrow: '',
-		selectedDate: new Date(2013, 8, 5),
+		selectedDate: new Date(2017, 1, 1),
 		selectableDateRange: [
-			{ from: new Date(2013, 8, 1), to: new Date(2013, 8, 10) },
-			{ from: new Date(2013, 8, 19), to: new Date(2013, 8, 22) },
+			{ from: new Date(2017, 1, 1), to: new Date(2017, 1, 10) },
+			{ from: new Date(2017, 1, 19), to: new Date(2017, 1, 22) },
 		],
 		selectableDates: [
-			{ date: new Date(2013, 8, 24) },
-			{ date: new Date(2013, 8, 30) }
+			{ date: new Date(2017, 1, 1) },
+			{ date: new Date(2017, 1, 2) }
 		]
 	});
 
 	// Example #3 - Custom style, repeating special dates and callback
-	$('#example3').glDatePicker(
+	$('#example9').glDatePicker(
 	{
 		showAlways: true,
 		cssName: 'darkneon',
