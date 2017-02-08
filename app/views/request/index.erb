@@ -1,7 +1,7 @@
-	
-	<% @bookings.each do |booking|  
-	 space = Space.first(:id => booking.space_id) %>
-		<div>
+
+<% @bookings.each do |booking|
+	space = Space.first(:id => booking.space_id) %>
+	<div>
 		<p><%=booking.id%> </p>
 		<p><%= space.name %></p>
 		<p><%=booking.from_date %></p>
@@ -12,5 +12,5 @@
 		<% else %>
 			<p>Unconfirmed</p>
 		<%end%>
-		</div>
-	<% end %>
+	</div>
+<% end %>
