@@ -1,1 +1,9 @@
-SPACE ID <%= @request_id %>
+SPACE ID <%= @request_id %><br>
+Name: <%= @space.name %><br>
+Description: <%= @space.description %><br>
+Price per night: £<%= format_price(@space.price_per_night) %><br><br>
+Available Dates<br>
+<% @dates = Availabledate.all(:space_id => @request_id) %>
+<% @dates.each do |available| %>
+  <%= available.date.strftime('%d-%m-%Y') %><br>
+<% end %>
