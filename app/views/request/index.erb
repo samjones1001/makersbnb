@@ -1,0 +1,16 @@
+	
+	<% @bookings.each do |booking|  
+	 space = Space.first(:id => booking.space_id) %>
+		<div>
+		<p><%=booking.id%> </p>
+		<p><%= space.name %></p>
+		<p><%=booking.from_date %></p>
+		<p><%=booking.to_date %></p>
+		<p><%=booking.created_on %></p>
+		<% if booking.hired %>
+			<p>Confirmed</p>
+		<% else %>
+			<p>Unconfirmed</p>
+		<%end%>
+		</div>
+	<% end %>

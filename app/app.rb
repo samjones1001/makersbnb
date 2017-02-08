@@ -8,4 +8,3 @@ require_relative 'server'
 require_relative 'controllers/space_controller'
 require_relative 'controllers/user_controller'
 require_relative 'controllers/session_controller'
-
