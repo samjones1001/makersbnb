@@ -17,19 +17,19 @@
 
 <% @spaces.each do |space| %>
   <% if @start_date != nil
-       @dates = Availabledate.all(:space_id => space.id, :date => @date_range)
+       @dates = Availabledate.all(:space_id => space.id, :date => @date_range, :available => true)
      else
        @dates = []
      end
 
      if !@dates.empty? || @start_date == nil %>
-    <%= space.name %><br>
-    <%= space.description[0..20] %><br>
-    £<%= format_price(space.price_per_night) %><br>
-    <form action='/spaces/?request=<%=space.id%>'>
-      <input type='hidden' id='request' name='request' value='<%=space.id%>'>
-      <input type="submit" name="submit" value="request booking">
-    </form>
-    <br><br>
+      <%= space.name %><br>
+      <%= space.description[0..20] %>...<br>
+      £<%= format_price(space.price_per_night) %><br>
+      <form action='/spaces/?request=<%=space.id%>'>
+        <input type='hidden' id='request' name='request' value='<%=space.id%>'>
+        <input type="submit" name="submit" value="View Space">
+      </form>
+      <br><br>
   <% end %>
 <% end %>
