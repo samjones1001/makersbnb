@@ -33,7 +33,7 @@ End date
   @dates = Availabledate.all(:space_id => @request_id)%>
 <% @dates.each do |available|
     amount_dates += 1 %>
-  <input type="hidden" id="<%=available.id%>" value ="<%= available.date %>">
+  <input type="hidden" id="<%=amount_dates%>" value ="<%= available.date %>">
 
 <% end %>
 <input type="hidden" id="amount_dates" value ="<%=amount_dates%>">
