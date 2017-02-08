@@ -12,20 +12,30 @@ Description: <%= @space.description %><br>
 Price per night: £<%= format_price(@space.price_per_night) %><br><br>
 Available Dates<br>
 <br><br>
+<form action='/request/new' method='post'>
+<div style="display: inline;">
+Start date
 <input type="text" id="startdate" gldp-id="mydate1" />
 <div gldp-el="mydate1"
      style="width:400px; height:300px; position:absolute; top:70px; left:100px;">
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+<div style="display: inline; padding-left: 250px">
+End date
 <input type="text" id="enddate" gldp-id="mydate2" />
 <div gldp-el="mydate2"
-     style="width:400px; height:300px; position:absolute; top:70px; left:100px;">
+     style="width:400px; height:300px; position:absolute; top:70px;">
 </div>
+</div>
+<div style="height: 600px"><input style="margin-top:320px" type="submit" value="Request booking"></div>
+</form>
 <% amount_dates = 0
   @dates = Availabledate.all(:space_id => @request_id)%>
 <% @dates.each do |available|
     amount_dates += 1 %>
   <input type="hidden" id="<%=available.id%>" value ="<%= available.date %>">
-  <%= available.date.strftime('%d-%m-%Y') %><br>
+
 <% end %>
 <input type="hidden" id="amount_dates" value ="<%=amount_dates%>">
+<input type='hidden' id="user_start_date" value="<%=session[:start_date]%>">
+<input type='hidden' id="user_end_date" value="<%=session[:end_date]%>">

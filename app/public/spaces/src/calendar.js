@@ -2,18 +2,26 @@ $(window).load(function()
 {
 	dateArray = []
 	for (i=1;i<=parseInt($('#amount_dates').val());i++){
-		year = parseInt($('#'+i).val().substring(0, 4))
-		month = parseInt($('#'+i).val().substring(5, 7))-1
-		day = parseInt($('#'+i).val().substring(8, 10))
-		dateArray.push({date: new Date(year,month,day)})
+		newDate = convertDate($('#'+i).val())
+		dateArray.push({date: newDate})
 	}
 	//
 	//
 	console.log(dateArray[0]['date'])
-	calendar = setUpCalendar(dateArray,dateArray[0]['date'])
+	if ($('#user_start_date').val() == null) {
+		calendar = setUpCalendar(dateArray);
+	}
+	else {
+	calendar = setUpCalendar(dateArray,convertDate($('#user_start_date').val()))
+	$('#startdate').val($('#user_start_date').val())
+	}
 	$('#startdate').glDatePicker(calendar);
-
-	calendar = setUpCalendar(dateArray,dateArray[dateArray.length-1]['date'])
+	if ($('#user_end_date').val() == null) {
+		calendar = setUpCalendar(dateArray)
+	} else {
+		calendar = setUpCalendar(dateArray,convertDate($('#user_end_date').val()))
+		$('#enddate').val($('#user_end_date').val())		
+	}
 	$('#enddate').glDatePicker(calendar);
 });
 
@@ -31,4 +39,11 @@ function setUpCalendar(dateArray,selectDate){
 
                 selectableDates: dateArray
             }
+}
+
+function convertDate(date) {
+	year = parseInt(date.substring(0, 4))
+	month = parseInt(date.substring(5, 7))-1
+	day = parseInt(date.substring(8, 10))
+	return new Date(year,month,day)
 }
