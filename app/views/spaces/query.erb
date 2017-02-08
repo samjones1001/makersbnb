@@ -12,8 +12,13 @@ Description: <%= @space.description %><br>
 Price per night: £<%= format_price(@space.price_per_night) %><br><br>
 Available Dates<br>
 <br><br>
-<input type="text" id="example2" gldp-id="mydate" />
-<div gldp-el="mydate"
+<input type="text" id="startdate" gldp-id="mydate1" />
+<div gldp-el="mydate1"
+     style="width:400px; height:300px; position:absolute; top:70px; left:100px;">
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<input type="text" id="enddate" gldp-id="mydate2" />
+<div gldp-el="mydate2"
      style="width:400px; height:300px; position:absolute; top:70px; left:100px;">
 </div>
 <% amount_dates = 0

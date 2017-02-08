@@ -9,19 +9,22 @@ $(window).load(function()
 	}
 	//
 	//
-	calendar = setUpCalendar(dateArray)
-	$('#example2').glDatePicker(calendar);
+	console.log(dateArray[0]['date'])
+	calendar = setUpCalendar(dateArray,dateArray[0]['date'])
+	$('#startdate').glDatePicker(calendar);
+
+	calendar = setUpCalendar(dateArray,dateArray[dateArray.length-1]['date'])
+	$('#enddate').glDatePicker(calendar);
 });
 
-function setUpCalendar(dateArray){
+function setUpCalendar(dateArray,selectDate){
   return {
-                // console.log(dateArray)
                 showAlways: true,
                 allowMonthSelect: true,
                 allowYearSelect: true,
                 prevArrow: '',
                 nextArrow: '',
-                selectedDate: new Date(2017, 1, 1),
+                selectedDate: selectDate,
                 selectableDateRange: [
 
                 ],
