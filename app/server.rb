@@ -24,8 +24,8 @@ class Server < Sinatra::Base
   end
 
   get '/spaces/' do
-    @request_id = params[:request].to_i
-    @space = Space.first(:id => @request_id)
+    session[:request_id] = params[:request].to_i
+    @space = Space.first(:id => session[:request_id])
     erb :'spaces/query'
   end
 
@@ -55,9 +55,27 @@ class Server < Sinatra::Base
     end
   end
 
+  post '/request/new' do
+    from_date = params[:startdate]
+    to_date = params[:enddate]
+    @booking = Booking.create(from_date: from_date,
+                  to_date: to_date,
+                  hired: false,
+                  created_on: Time.new,
+                  user_id: session[:user_id],
+                  space_id: session[:request_id])
+    if @booking.save
+      redirect to '/request'
+    else 
+      flash.now[:errors] = @booking.errors.full_messages
+      redirect to '/'
+    end
+  end
 
-
-
+  get '/request' do
+    @bookings = Booking.all(:user_id => session[:user_id])
+    erb :'request/index'
+  end
 
 
   run! if app_file == $0

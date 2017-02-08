@@ -6,7 +6,7 @@
 <script src="src/glDatePicker.min.js"></script>
 <script src="src/calendar.js"></script>
 
-SPACE ID <%= @request_id %><br>
+
 Name: <%= @space.name %><br>
 Description: <%= @space.description %><br>
 Price per night: £<%= format_price(@space.price_per_night) %><br><br>
@@ -15,14 +15,14 @@ Available Dates<br>
 <form action='/request/new' method='post'>
 <div style="display: inline;">
 Start date
-<input type="text" id="startdate" gldp-id="mydate1" />
+<input type="text" name='startdate' id="startdate" gldp-id="mydate1" />
 <div gldp-el="mydate1"
      style="width:400px; height:300px; position:absolute; top:70px; left:100px;">
 </div>
 </div>
 <div style="display: inline; padding-left: 250px">
 End date
-<input type="text" id="enddate" gldp-id="mydate2" />
+<input type="text" name ='enddate' id="enddate" gldp-id="mydate2" />
 <div gldp-el="mydate2"
      style="width:400px; height:300px; position:absolute; top:70px;">
 </div>
@@ -30,7 +30,7 @@ End date
 <div style="height: 600px"><input style="margin-top:320px" type="submit" value="Request booking"></div>
 </form>
 <% amount_dates = 0
-  @dates = Availabledate.all(:space_id => @request_id)%>
+  @dates = Availabledate.all(:space_id => session[:request_id], :available => true)%>
 <% @dates.each do |available|
     amount_dates += 1 %>
   <input type="hidden" id="<%=amount_dates%>" value ="<%= available.date %>">
