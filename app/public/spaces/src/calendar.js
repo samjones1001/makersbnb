@@ -7,8 +7,7 @@ $(window).load(function()
 	}
 	//
 	//
-	console.log(dateArray[0]['date'])
-	if ($('#user_start_date').val() == null) {
+	if ($('#user_start_date').val() == "") {
 		calendar = setUpCalendar(dateArray);
 	}
 	else {
@@ -16,8 +15,9 @@ $(window).load(function()
 	$('#startdate').val($('#user_start_date').val())
 	}
 	$('#startdate').glDatePicker(calendar);
-	if ($('#user_end_date').val() == null) {
+	if ($('#user_start_date').val() == "") {
 		calendar = setUpCalendar(dateArray)
+		$('#enddate').val("")
 	} else {
 		calendar = setUpCalendar(dateArray,convertDate($('#user_end_date').val()))
 		$('#enddate').val($('#user_end_date').val())		
