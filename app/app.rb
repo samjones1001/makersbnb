@@ -15,19 +15,21 @@ class Server < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
+    @spaces = Space.all
     erb :index
-
   end
 
   post '/spaces/search' do
-    @start_date = format_date(params[:start_date])
-    @end_date = format_date(params[:end_date])
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @date_range = @start_date..@end_date
     @spaces = Space.all
     erb :index
   end
 
   get '/spaces/' do
     @request_id = params[:request].to_i
+    @space = Space.first(:id => @request_id)
     erb :'spaces/query'
   end
 

@@ -1,7 +1,3 @@
-
-
-
-
 <form action='/spaces/search' method='post' >
   <label for='start_date'>
     Start date: <input name='start_date' type='date' >
@@ -12,19 +8,28 @@
   <input type="submit" value="Show Spaces">
 </form>
 
+<h1> Available Spaces </h1><br>
 
-<% if @spaces %>
-  <h1> Available Spaces </h1>
+<% if @start_date != nil %>
+  Searching for spaces on the dates<br>
+  <%= format_date(@start_date) %> to <%= format_date(@end_date) %><br>
+<% end %>
 
-  Searching for spaces on the dates <br>
-  <%= @start_date %> to <%= @end_date %><br>
-  <% @spaces.each do |space| %>
+<% @spaces.each do |space| %>
+  <% if @start_date != nil
+       @dates = Availabledate.all(:space_id => space.id, :date => @date_range)
+     else
+       @dates = []
+     end
+
+     if !@dates.empty? || @start_date == nil %>
     <%= space.name %><br>
-    <%= space.description %><br>
-    £<%= '%.2f' % space.price_per_night %><br><br>
+    <%= space.description[0..20] %><br>
+    £<%= format_price(space.price_per_night) %><br>
     <form action='/spaces/?request=<%=space.id%>'>
       <input type='hidden' id='request' name='request' value='<%=space.id%>'>
       <input type="submit" name="submit" value="request booking">
     </form>
+    <br><br>
   <% end %>
 <% end %>
