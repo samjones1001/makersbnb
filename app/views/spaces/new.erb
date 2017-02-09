@@ -1,21 +1,62 @@
 
 
-  <form action="/spaces" method="post">
-    Name:<br>
-    <input type="text" name="name">
-    <br>
-    Description:<br>
-    <input type="text" name="description">
-    <br><br>
-    Price Per Night:<br>
-    <input type="number" name="price_per_night">
-    <br>
-    Available From:<br>
-    <input type="date" name="available_from">
-    <br>
-    Available To:<br>
-    <input type="date" name="available_to">
-    <br>
+  <div class="container">
 
-    <input type="submit" value="List my Space">
-  </form>
+  	<h1>Please provide details of your listing</h1>
+
+  <form action='/spaces' method='post'>
+
+  		<div class="form-group">
+  			<div class="row">
+  				<div class="col-md-6 col-md-offset-3">
+  					<label for="name">Name:</label>
+  					<input type="text" class="form-control" name="name" placeholder="Enter a name for your listing">
+  				</div>
+  			</div>
+  		</div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" name="description" placeholder="Enter a brief description of your listing">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <label for="price_per_night">Price Per Night:</label>
+            <input type="number" class="form-control" name="price_per_night" placeholder="Enter a figure">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <label for="available_from">Available From:</label>
+            <input type="date" class="form-control" name="available_from" placeholder="Pick a date">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <label for="available_to">Available To:</label>
+            <input type="date" class="form-control" name="available_to" placeholder="Pick a date">
+          </div>
+        </div>
+      </div>
+
+  		<div class="form-group">
+  			<div class="row">
+  				<div class="col-md-6 col-md-offset-3">
+  					<button type="submit" class="btn btn-primary btn-primary-spacing">List my Space</button>
+  				</div>
+  			</div>
+  		</div>
+  	</form>
+  </div>
