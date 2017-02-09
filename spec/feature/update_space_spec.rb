@@ -15,15 +15,25 @@ before(:each) do
 
   space1 = Space.create!(name: "Home",
     description: "Amazing place",
+    start_date: "2017-01-01",
+    end_date: "2017-01-05",
     price_per_night: 4.50,
     image: nil,
     user_id: user1.id)
 
   space2 = Space.create!(name: "Big Home",
       description: "More amazing place",
+      start_date: "2017-01-01",
+      end_date: "2017-01-05",
       price_per_night: 10.50,
       image: nil,
       user_id: user2.id)
+
+      date_array = (space1.start_date..space1.end_date)
+
+      date_array.each do |i|
+        Availabledate.create(date: i, available: true, space_id: space1.id)
+      end
 end
 
   context "when logged in" do
@@ -67,7 +77,7 @@ end
       expect(find_field('price_per_night').value).to eq('£4.50')
     end
 
-    scenario 'user can update name, description and price_per_night' do
+    scenario 'user can update name, description, price_per_night and available dates' do
 
       sign_in(email: 'test@test.com', password: 'password')
       visit('/spaces/edit')
@@ -78,11 +88,29 @@ end
       fill_in('name', with: "New Home")
       fill_in('description', with: "Another amazing place")
       fill_in('price_per_night', with: "9")
+      fill_in('available_from', with: "2017-01-01")
+      fill_in('available_to', with: "2017-01-03")
       click_button 'Submit changes'
 
       expect(page).to have_content("New Home")
       expect(page).to have_content("Another amazing place")
       expect(page).to have_content("£9.00")
+      expect(page).to have_content("2017-01-03")
+
+    end
+
+    scenario 'user can remove unwanted available dates' do
+
+      sign_in(email: 'test@test.com', password: 'password')
+      visit('/spaces/edit')
+      within('ul#myspaces li:nth-child(1)') do
+        click_button 'Update my Space'
+      end
+
+      fill_in('available_from', with: "2017-01-01")
+      fill_in('available_to', with: "2017-01-03")
+
+      expect{ click_button 'Submit changes' }.to change(Availabledate, :count).from(5).to(3)
 
     end
 

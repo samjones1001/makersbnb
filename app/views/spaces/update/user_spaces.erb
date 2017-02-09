@@ -9,12 +9,16 @@
         <span class="name"><%= user_space.name %></span>
         <span class="description"><%= user_space.description %></span>
         <span class="price_per_night">£<%= format_price(user_space.price_per_night) %></span>
+        <span class="available_from"><%= user_space.start_date %></span>
+        <span class="available_to"><%= user_space.end_date %></span>
 
         <form action='/spaces/edit' method="post">
           <input type="hidden", name="spaceid" value="<%= user_space.id %>">
           <input type="hidden", name="name" value="<%= user_space.name %>">
           <input type="hidden", name="description" value="<%= user_space.description %>">
           <input type="hidden", name="price_per_night" value="<%= format_price(user_space.price_per_night) %>">
+          <input type="hidden", name="available_from" value="<%= user_space.start_date %>">
+          <input type="hidden", name="available_to" value="<%= user_space.end_date %>">
           <input type="submit" name="submit" value="Update my Space">
         </form>
       </li>
