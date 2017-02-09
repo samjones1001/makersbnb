@@ -1,4 +1,4 @@
-def new_listing(name="Name", description="Description", price_per_night=4.50, available_from="01/01/2017", available_to="05/01/2017")
+def new_listing(name="Home", description="Amazing place", price_per_night=4.50, available_from="01/01/2017", available_to="05/01/2017")
 
   visit('/spaces/new')
   fill_in('name', with: name)
@@ -23,6 +23,7 @@ def sign_up(name: 'Joe Bloggs',
   fill_in :password_confirmation, with: password_confirmation
   click_button 'Sign Up!'
 end
+
 
 
 def sign_in(email:, password:)

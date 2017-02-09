@@ -10,4 +10,10 @@ module Helpers
   def format_price(price)
     '%.2f' % price
   end
+
+  #returns true if current user is logged in
+  def logged_in?
+    !current_user.nil?
+  end
+
 end

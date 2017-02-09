@@ -1,0 +1,23 @@
+
+<h2>Update Listing Form</h2>
+
+<form action="/spaces/update" method="post" id="listingupdate">
+  <input type="hidden" name="spaceid" value="<%= @space_id %>">
+  Name:<br>
+  <input type="text" name="name" value="<%= @space_name %>">
+  <br>
+  Description:<br>
+  <input type="text" name="description" value="<%= @space_description %>">
+  <br><br>
+  Price Per Night:<br>
+  <input type="number" name="price_per_night" value="£<%= @space_price_per_night %>">
+  <br>
+  Available From:<br>
+  <input type="date" name="available_from">
+  <br>
+  Available To:<br>
+  <input type="date" name="available_to">
+  <br>
+
+  <input type="submit" value="Submit changes">
+</form>
