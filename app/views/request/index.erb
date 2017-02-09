@@ -35,10 +35,12 @@
 
 
 </div>
+<div style="border:black solid 2px;width: 31%;float:left;margin-left: 15%;padding: 10px;" display="inline-block">
 
+<h3 align="center">Requests Made</h3>
 <% @bookings.each do |booking|
 	space = Space.first(:id => booking.space_id) %>
-	<div>
+  <div class="container" style="border:black solid 2px; width: 90%">
 		<p><%=booking.id%> </p>
 		<p><%= space.name %></p>
 		<p><%=booking.from_date %></p>
@@ -49,12 +51,16 @@
 		<% else %>
 			<p>Unconfirmed</p>
 		<%end%>
-	</div>
-<% end %>
+</div><br><br>
 
+<% end %>
+</div>
+
+<div style="border:black solid 2px;width: 31%;float:right; margin-right: 15%;padding: 10px;" display="inline-block">
+<h3 align="center">Requests Received</h3>
 <% @my_booking_request.each do |request| %>
 	<% space = space_data(request.space_id) %>
-
+<div class="container" style="border:black solid 2px; width: 90%">
 	Request ID <%= request.id %><br>
 	<% if !able_to_book(request.space_id) && !request.hired%>DATES TAKEN<br><%end%>
 	Space name <%= space.name %><br>
@@ -70,11 +76,13 @@
 	<form action='/request/validate' method='post'>
 		<input type='hidden' name='request_id' value='<%=request.id%>'>
 		<% if able_to_book(request.space_id) %>
-			<input type='submit' name="validate" value='confirm'>
+			<input type='submit' name="validate" value='confirm' class="btn btn-primary btn-primary-spacing">
 		<% end %>
 		<% if request.hired==false %>
-			<input type='submit' name="validate" value='deny'>
+			<input type='submit' name="validate" value='deny' class="btn btn-primary btn-primary-spacing">
 		<% end %>
 	</form>
 	<br>
+</div><br><br>
 <% end %>
+</div>
