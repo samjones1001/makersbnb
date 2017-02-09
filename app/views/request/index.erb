@@ -14,3 +14,16 @@
 		<%end%>
 	</div>
 <% end %>
+
+<% @my_booking_request.each do |request| %>
+<%= request.space_id%><br>
+<%= request.from_date%><br>
+<%= request.to_date%><br>
+<%= request.hired%><br>
+<%= request.user_id%> <br>
+<%= user_data(request.user_id).name%> <br>
+<form action='' method=''>
+	<input id='confirm' type='submit' value='Confirm'>
+	<input id='deny' type='submit' value='Deny'>
+</form>
+<% end %>
