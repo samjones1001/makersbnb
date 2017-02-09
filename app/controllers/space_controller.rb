@@ -18,10 +18,10 @@ class Server < Sinatra::Base
     erb(:'/spaces/new')
   end
 
-  get '/spaces/edit' do
-    @user_spaces = Space.all(:user_id => current_user.id)
-    erb(:'/spaces/update/user_spaces')
-  end
+  # get '/spaces/edit' do
+  #   @user_spaces = Space.all(:user_id => current_user.id)
+  #   erb(:'/spaces/update/user_spaces')
+  # end
 
   post '/spaces/edit' do
     session[:space_id] = params[:spaceid]

@@ -15,6 +15,10 @@ module Helpers
    User.first(:id => user_id)
   end
 
+  def user_spaces(user_id = current_user.id)
+    Space.all(:user_id => user_id)
+  end
+
   def booking_data(booking_id)
     Booking.first(:id => booking_id)
   end
