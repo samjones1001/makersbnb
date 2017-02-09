@@ -22,8 +22,14 @@
 <%= request.hired%><br>
 <%= request.user_id%> <br>
 <%= user_data(request.user_id).name%> <br>
+<%= user_data(request.user_id).email%> <br>
+
+
 <form action='' method=''>
+	<% if able_to_book(request.space_id) %><br>
 	<input id='confirm' type='submit' value='Confirm'>
+	<% end %>
 	<input id='deny' type='submit' value='Deny'>
 </form>
+
 <% end %>

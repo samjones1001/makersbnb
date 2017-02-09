@@ -23,5 +23,17 @@ module Helpers
     Space.first(:id => space_id)
   end
 
+  def availabilty(space_id)
+    Availabledate.all(:space_id => space_id)
+  end
+
+  def able_to_book(space_id)
+    available_spaces = availabilty(space_id)
+      available_spaces.each do |space|
+        return false if space.available == false
+      end
+      return true
+  end
+
 
 end
