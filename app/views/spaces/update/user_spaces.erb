@@ -1,10 +1,15 @@
+<div class="container">
+
 <% if logged_in? %>
-<h3>My Listed Spaces</h3>
+<h3 align="center">My Listed Spaces</h3>
 
 
 <ul id='myspaces'>
   <% if !@user_spaces.nil? %>
     <% @user_spaces.each do |user_space| %>
+
+      <div class="container" style="border:black solid 2px">
+
       <li id="user_space-<%= user_space.id%>">
         <span class="name"><%= user_space.name %></span>
         <span class="description"><%= user_space.description %></span>
@@ -19,11 +24,13 @@
           <input type="hidden", name="price_per_night" value="<%= format_price(user_space.price_per_night) %>">
           <input type="hidden", name="available_from" value="<%= user_space.start_date %>">
           <input type="hidden", name="available_to" value="<%= user_space.end_date %>">
-          <input type="submit" name="submit" value="Update my Space">
+          <input type="submit" name="submit" class="btn btn-primary btn-primary-spacing" value="Update my Space">
         </form>
       </li>
+    </div><br><br>
     <% end %>
   <% end %>
 </ul>
 
 <% end %>
+</div>

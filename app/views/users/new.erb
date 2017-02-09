@@ -5,34 +5,68 @@
 </head>
 <body>
 
-<h1>Please sign up for a MakersBnB account</h1>
+
+
+<div class="container">
+
+	<h1>Please sign up for a MakersBnB account</h1>
 
 <form action='/users' method='post'>
-  
-  <label for='name'>
-    Full Name: <input name='name' type='text' value='<%= @user.name %>' required>
-  </label>
-  
-  <label for='email'>
-    Email: <input name='email' type='text' value='<%= @user.email %>' required>
-  </label>
-  
-  <label for='username'>
-    User Name: <input name='username' type='text' value='<%= @user.username %>' required>
-  </label>
-  
-  <label for='password'>
-    Password: <input name='password' type='password' required>
-  </label>
-  
-  <label for='password_confirmation'>
-    Password Confirmation: <input name='password_confirmation' type='password' required>
-  
-  </label>
-  
-  <input type='submit' value='Sign Up!'>
-  
-</form>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" name="name" placeholder="Enter name" value="<% if @user %><%= @user.name %><% end %>">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<label for="email">Email:</label>
+					<input type="email" class="form-control" name="email" placeholder="Enter email" value="<% if @user %><%= @user.email %><% end %>">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<label for="username">Username:</label>
+					<input type="text" class="form-control" name="username" placeholder="Enter username" value="<% if @user %><%= @user.username %><% end %>">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<label for="password">Password:</label>
+					<input type="password" class="form-control" name="password" placeholder="Enter password">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<label for="password_confirmation">Password Confirmation:</label>
+					<input type="password" class="form-control" name="password_confirmation" placeholder="Enter password again">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<button type="submit" class="btn btn-primary btn-primary-spacing">Sign Up!</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
 
 </body>
 </html>
