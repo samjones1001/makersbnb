@@ -28,6 +28,13 @@ class Server < Sinatra::Base
     erb :'request/index'
   end
 
-
+  post '/request/validate' do
+    if params[:validate]!="deny"
+      confirm_booking(params[:request_id].to_i)
+      redirect to '/request'
+    else
+      # TODO: Deny request
+    end
+  end
 
 end
