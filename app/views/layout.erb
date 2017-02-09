@@ -1,31 +1,70 @@
 <!DOCTYPE html>
 <html>
-  
+
 <head>
   <title>MakersBnB</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-  
-  <% if current_user %>
-    Welcome to MakersBnB, <%= current_user.username %>
 
-    <form action='/sessions' method='post'>
-      <input type='hidden' name='_method' value='delete'>
-      <input type='submit' value='Sign Out!'>
-    </form>
-    
-  <% end %>
- 
-  <% if flash[:errors] && !flash[:errors].empty? %>
-	<ul id='errors'>
-      <% flash[:errors].each do |error| %>
-    <li><%= error %></li>
-      <% end %>
-  	</ul>
-  <% end %>
-    
-  <%= yield %>  
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Makers BnB</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-globe"></span> My BnB</a></li>
+          <li><a href="/users/new"><span class="glyphicon glyphicon-pencil"></span> Sign up</a></li>
+          <li><a href="/sessions/new"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
+          <li><a href="/sessions/logout"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <% if current_user %>
+      Welcome to MakersBnB, <%= current_user.username %>
+    <% end %>
+
+  </div><br><br>
+
+  <div class="container">
+    <div class="col-md-6 col-md-offset-3">
+      <% if flash[:errors] && !flash[:errors].empty? %>
+        <div class="alert alert-danger">
+          <ul>
+            <% flash[:errors].each do |error| %>
+            <li>
+              <%=error%>
+            </li>
+          <% end %>
+          </ul>
+        <% end %>
+        </div>
+    </div>
+  </div>
+
+
+
+  <%= yield %>
 </body>
 
 </html>

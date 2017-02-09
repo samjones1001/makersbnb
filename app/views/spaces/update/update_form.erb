@@ -1,0 +1,64 @@
+
+<div class="container">
+
+  <h1>Update Listing Form</h1>
+
+<form action="/spaces/update" method="post" id="listingupdate">
+
+  <input type="hidden" name="spaceid" value="<%= @space_id %>">
+
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" name="name" value="<%= @space_name %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <label for="description">Description:</label>
+          <input type="text" class="form-control" name="description" value="<%= @space_description %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <label for="price_per_night">Price Per Night:</label>
+          <input type="number" class="form-control" name="price_per_night" value="£<%= @space_price_per_night %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <label for="available_from">Available From:</label>
+          <input type="date" class="form-control" name="available_from" value="<%= @space_available_from %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <label for="available_to">Available To:</label>
+          <input type="date" class="form-control" name="available_to" value="<%= @space_available_to %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <button type="submit" class="btn btn-primary btn-primary-spacing">Submit changes</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

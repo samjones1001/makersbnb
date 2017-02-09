@@ -15,7 +15,7 @@ class Server < Sinatra::Base
     end
   end
 
-  delete '/sessions' do
+  get '/sessions/logout' do
     session[:user_id] = nil
     redirect to 'sessions/new'
   end
