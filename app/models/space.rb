@@ -10,4 +10,7 @@ class Space
   property :description,      String
   property :price_per_night,  Float,  required: true
   property :image,            Text
+  property :start_date,       Date
+  property :end_date,         Date
+
 end
