@@ -3,7 +3,7 @@
 
 ## Team Members
 * [Adrian Eyre] (https://github.com/adrianeyre)
-* [Same Jones] (https://github.com/samjones1001)
+* [Sam Jones] (https://github.com/samjones1001)
 * [Basile Koko] (https://github.com/BasileKoko)
 * [Justin Butwell] (https://github.com/Justinio14)
 * [Paul Goodman] (https://github.com/thegooders)
