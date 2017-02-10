@@ -7,6 +7,10 @@ module Helpers
     DateTime.parse(date).strftime('%d-%m-%Y')
   end
 
+  def format_date_american(date)
+    date.strftime('%Y-%m-%d').to_s
+  end
+
   def format_price(price)
     '%.2f' % price
   end

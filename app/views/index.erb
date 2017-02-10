@@ -1,10 +1,10 @@
 <div class="container">
   <form action='/spaces/search' method='post' >
     <label for='start_date'>
-      Start date: <input name='start_date' type='date' value='<%= Time.now %>' class="form-control">
+      Start date: <input name='start_date' type='date' value='<%=format_date_american(DateTime.now)%>' class="form-control">
     </label>
     <label for='end_date'>
-      End date: <input name='end_date' type='date' class="form-control">
+      End date: <input name='end_date' type='date'  value='<%=format_date_american(DateTime.now+7)%>' class="form-control">
     </label>
     <input type="submit" value="Show Spaces" class="btn btn-primary btn-primary-spacing">
   </form>
