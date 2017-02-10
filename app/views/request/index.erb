@@ -34,11 +34,11 @@
 </ul>
 
 
-</div>
 
+<div style="float:left; width:45%; border:black 2px solid; margin-left:25px; margin-bottom:20px">
 <% @bookings.each do |booking|
 	space = Space.first(:id => booking.space_id) %>
-	<div>
+	<div class="content_box" >
 		<p><%=booking.id%> </p>
 		<p><%= space.name %></p>
 		<p><%=booking.from_date %></p>
@@ -51,8 +51,13 @@
 		<%end%>
 	</div>
 <% end %>
+</div>
 
+
+
+<div style="float:right; width:45%; border:black 2px solid; margin-right:25px; margin-bottom:20px">
 <% @my_booking_request.each do |request| %>
+	<div class="content_box" >
 	<% space = space_data(request.space_id) %>
 
 	Request ID <%= request.id %><br>
@@ -76,5 +81,9 @@
 			<input type='submit' name="validate" value='deny'>
 		<% end %>
 	</form>
+	</div>
 	<br>
 <% end %>
+</div>
+
+</div>

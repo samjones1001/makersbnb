@@ -28,6 +28,9 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Makers BnB</a>
+        <% if current_user %>
+          <div class="welcome_message">Welcome to MakersBnB, <%= current_user.username %></div>
+        <% end %>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -42,9 +45,7 @@
 
   <div class="container" style='margin-bottom:-25px'>
 
-    <% if current_user %>
-      Welcome to MakersBnB, <%= current_user.username %>
-    <% end %>
+
 
   </div><br><br>
 
