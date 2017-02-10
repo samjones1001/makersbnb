@@ -18,7 +18,7 @@
 
 <div class = 'index_left'>
 <h1 style='margin-left:40px'>Available Spaces </h1>
-
+<div style=" overflow: scroll; height:340px">
 <% if session[:start_date] != nil %>
   Searching for spaces on the dates<br>
   <%= format_date(session[:start_date]) %> to <%= format_date(session[:end_date]) %><br>
@@ -36,7 +36,7 @@
 
      <div class="content_box inner_el">
         <div class="pictureframe"></div>
-        <div class="index_content">  
+        <div class="index_content">
           <%= space.name %><br>
           <%= space.description[0..20] %>...<br>
           £<%= format_price(space.price_per_night) %><br>
@@ -46,8 +46,9 @@
           </form>
         </div>
     </div>
-      
+
   <% end %>
 <% end %>
+</div>
 </div>
 </div>
