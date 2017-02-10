@@ -7,4 +7,5 @@ class Availabledate
   property :id,               Serial
   property :date,             Date,     required: true
   property :available,        Boolean,  required: true
+
 end
