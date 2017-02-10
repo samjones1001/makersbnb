@@ -94,19 +94,19 @@ I want a posting to remain available until I confirm a hire request
 
 ## <a name="Shots">Screen Shots</a>
 ### Main Screen
-[![ScreenShot1](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot1.png "Screen Shot 1")
+[![ScreenShot1](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot1.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot1.png "Screen Shot 1")
 
 ### Sign Up Screen
-[![ScreenShot2](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot2.png "Screen Shot 2")
+[![ScreenShot2](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot2.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png "Screen Shot 2")
 
 ### Sign Up Screen
-[![ScreenShot3](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot3.png)](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot3.png "Screen Shot 3")
+[![ScreenShot3](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot3.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png "Screen Shot 3")
 
 ### Sign Up Screen
-[![ScreenShot4](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot4.png)](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot4.png "Screen Shot 4")
+[![ScreenShot4](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot4.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png "Screen Shot 4")
 
 ### Sign Up Screen
-[![ScreenShot5](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot5.png)](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot5.png "Screen Shot 5")
+[![ScreenShot5](https://raw.githubusercontent.com/adrianeyre/makersbnb/master/images/screenshot5.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot5.png "Screen Shot 5")
 
 
 ## <a name="Heroku">Live on Heroku</a>
