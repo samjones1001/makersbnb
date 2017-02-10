@@ -5,10 +5,10 @@ class Server < Sinatra::Base
   end
 
   post '/sessions' do
-    user = User.authenticate(params[:email], params[:password])
+    user = User.authenticate(params[:email].downcase, params[:password])
     if user
       session[:user_id] = user.id
-      redirect to('/sessions/new')
+      redirect to('/')
     else
       flash.now[:errors] = ['The email or password is incorrect']
       erb :'/sessions/new'
@@ -17,7 +17,7 @@ class Server < Sinatra::Base
 
   get '/sessions/logout' do
     session[:user_id] = nil
-    redirect to 'sessions/new'
+    redirect to '/'
   end
 
 end

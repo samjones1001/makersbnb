@@ -1,47 +1,39 @@
 <div class="container">
+  <form action='/spaces/search' method='post' >
+    <label for='start_date'>
+      Start date: <input name='start_date' type='date' value='<%= Time.now %>' class="form-control">
+    </label>
+    <label for='end_date'>
+      End date: <input name='end_date' type='date' class="form-control">
+    </label>
+    <input type="submit" value="Show Spaces" class="btn btn-primary btn-primary-spacing">
+  </form>
 
-
-<form action='/spaces/search' method='post' >
-  <label for='start_date'>
-    Start date: <input name='start_date' type='date' class="form-control">
-  </label>
-  <label for='end_date'>
-    End date: <input name='end_date' type='date' class="form-control">
-  </label>
-  <input type="submit" value="Show Spaces" class="btn btn-primary btn-primary-spacing">
-</form>
-
-
-<h1> Available Spaces </h1><br>
-
-<% if session[:start_date] != nil %>
-  Searching for spaces on the dates<br>
-  <%= format_date(session[:start_date]) %> to <%= format_date(session[:end_date]) %><br>
-<% end %>
-
-<% @spaces.each do |space| %>
-
-  <% if session[:start_date] != nil
-       @dates = Availabledate.all(:space_id => space.id, :date => @date_range, :available => true)
-     else
-       @dates = []
-     end
-
-     if !@dates.empty? || session[:start_date] == nil %>
-
-     <div class="container" style="border:black solid 2px">
-      <%= space.name %><br>
-      <%= space.description[0..20] %>...<br>
-      £<%= format_price(space.price_per_night) %><br>
-
-
-      <form action='/spaces/?request=<%=space.id%>'>
-        <input type='hidden' id='request' name='request' value='<%=space.id%>'>
-        <input type="submit" name="submit" value="View Space" class="btn btn-primary btn-primary-spacing">
-      </form>
-      </div>
-      <br><br>
+  <h1> Available Spaces </h1><br>
+  <% if session[:start_date] != nil %>
+    Searching for spaces on the dates<br>
+    <%= format_date(session[:start_date]) %> to <%= format_date(session[:end_date]) %><br>
   <% end %>
-<% end %>
 
+  <% @spaces.each do |space| %>
+    <% if session[:start_date] != nil
+         @dates = Availabledate.all(:space_id => space.id, :date => @date_range, :available => true)
+       else
+         @dates = []
+       end
+       if !@dates.empty? || session[:start_date] == nil %>
+
+       <div class="container" style="border:black solid 2px">
+        <%= space.name %><br>
+        <%= space.description[0..20] %>...<br>
+        £<%= format_price(space.price_per_night) %><br>
+
+        <form action='/spaces/?request=<%=space.id%>'>
+          <input type='hidden' id='request' name='request' value='<%=space.id%>'>
+          <input type="submit" name="submit" value="View Space" class="btn btn-primary btn-primary-spacing">
+        </form>
+        </div>
+        <br><br>
+    <% end %>
+  <% end %>
 </div>

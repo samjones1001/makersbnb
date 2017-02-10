@@ -60,4 +60,9 @@ module Helpers
     !current_user.nil?
   end
 
+  def valid_date_range(from, to)
+    return false if from == "" || to == ""
+    return false if format_date(from) > format_date(to)
+    true
+  end
 end

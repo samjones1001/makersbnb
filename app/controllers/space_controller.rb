@@ -1,5 +1,5 @@
 class Server < Sinatra::Base
-  
+
   post '/spaces/search' do
     session[:start_date] = params[:start_date]
     session[:end_date] = params[:end_date]
@@ -9,7 +9,7 @@ class Server < Sinatra::Base
   end
 
   get '/spaces/' do
-    session[:request_id] = params[:request].to_i
+    session[:request_id] = params[:request].to_i if params[:request] == ""
     @space = Space.first(:id => session[:request_id])
     erb :'spaces/query'
   end
