@@ -42,7 +42,7 @@ end
 
       sign_in(email: 'test@test.com', password: 'password')
       visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      within('#myspaces') do
         expect(page).to_not have_content("Big Home")
         expect(page).to_not have_content("More amazing place")
         expect(page).to_not have_content("£10.50")
@@ -54,7 +54,7 @@ end
       sign_in(email: 'test@test.com', password: 'password')
       visit('/request')
 
-      within('ul#myspaces li:nth-child(1)') do
+      within('#myspaces') do
         expect(page).to have_content("Home")
         expect(page).to have_content("Amazing place")
         expect(page).to have_content("£4.50")
@@ -67,7 +67,7 @@ end
 
       sign_in(email: 'test@test.com', password: 'password')
       visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      within('#myspaces') do
         click_button 'Update my Space'
       end
 
@@ -81,7 +81,7 @@ end
 
       sign_in(email: 'test@test.com', password: 'password')
       visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      within('#myspaces') do
         click_button 'Update my Space'
       end
 
@@ -103,7 +103,7 @@ end
 
       sign_in(email: 'test@test.com', password: 'password')
       visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      within('#myspaces') do
         click_button 'Update my Space'
       end
 
