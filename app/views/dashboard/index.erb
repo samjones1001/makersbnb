@@ -34,7 +34,7 @@
   <div style=" overflow-y: scroll; height:500px">
   <% @bookings.each do |booking|
   	space = Space.first(:id => booking.space_id) %>
-    <div class="content_box" style="height: 250px">
+    <div class="content_box" style="height: 270px">
   <div class="inner">
     <p>Booking ID: <%=booking.id%> </p>
     <p>Space: <%= space.name %></p>
@@ -56,7 +56,7 @@
   <h3 align="center">Requests Received</h3>
   <div style=" overflow-y: scroll; height:500px">
   <% @my_booking_request.each do |request| %>
-  <div class="content_box" style="height: 250px" >
+  <div class="content_box" style="height: 270px" >
 <div class="inner">
     <% space = space_data(request.space_id) %>
    

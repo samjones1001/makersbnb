@@ -18,7 +18,7 @@
 
 <div class = 'index_left'>
   <h1 style='margin-left:40px; margin-top:-20px'> Available Spaces </h1>
-  <div style=" overflow-y: scroll; height:340px">
+  <div style=" overflow-y: scroll; height:600px">
   <% if session[:start_date] != nil %>
     Searching for spaces on the dates<br>
     <%= format_date(session[:start_date]) %> to <%= format_date(session[:end_date]) %><br>
