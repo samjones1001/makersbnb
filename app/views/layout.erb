@@ -13,11 +13,13 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+  <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+
 </head>
 
 <body>
 
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-static-top navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -26,10 +28,14 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Makers BnB</a>
+        <% if current_user %>
+          <div class="welcome_message">Welcome to MakersBnB, <%= current_user.username %></div>
+        <% end %>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/request"><span class="glyphicon glyphicon-globe"></span> My BnB</a></li>
+          <li><a href="/spaces/new"><span class="glyphicon glyphicon-globe"></span> List a Space</a></li>
           <li><a href="/users/new"><span class="glyphicon glyphicon-pencil"></span> Sign up</a></li>
           <li><a href="/sessions/new"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
           <li><a href="/sessions/logout"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
@@ -38,11 +44,9 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container" style='margin-bottom:-25px'>
 
-    <% if current_user %>
-      Welcome to MakersBnB, <%= current_user.username %>
-    <% end %>
+
 
   </div><br><br>
 
@@ -65,6 +69,7 @@
 
 
   <%= yield %>
+ 
 </body>
 
 </html>
