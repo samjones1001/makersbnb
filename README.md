@@ -37,6 +37,7 @@ We would like a web application that allows users to list spaces they have avail
 * Javascript
 * Jquery
 * Datamapper
+* [Waffle] (https://waffle.io/samjones1001/makersbnb)
 
 ## <a name="Install">Installation</a>
 ### To clone the repo
