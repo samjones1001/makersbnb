@@ -5,11 +5,11 @@ class Server < Sinatra::Base
     to_date = params[:enddate]
     if valid_date_range(from_date.to_s, to_date.to_s)
       @booking = Booking.create(from_date: from_date,
-                    to_date: to_date,
-                    hired: false,
-                    created_on: Time.new,
-                    user_id: session[:user_id],
-                    space_id: session[:request_id])
+                                to_date: to_date,
+                                hired: false,
+                                created_on: Time.new,
+                                user_id: session[:user_id],
+                                space_id: session[:request_id])
       if @booking.save
         redirect to '/dashboard'
       else

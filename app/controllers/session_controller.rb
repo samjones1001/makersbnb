@@ -19,5 +19,4 @@ class Server < Sinatra::Base
     session[:user_id] = nil
     redirect to '/'
   end
-
 end
