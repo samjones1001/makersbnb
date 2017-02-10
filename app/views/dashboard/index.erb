@@ -11,7 +11,7 @@
 
         <li id="user_space-<%= user_space.id%>">
           <span class="name" style="margin-left:25%">Name: <%= user_space.name %></span><br>
-          
+
           <form action='/spaces/edit' method="post">
             <input type="hidden", name="spaceid" value="<%= user_space.id %>">
             <input type="hidden", name="name" value="<%= user_space.name %>">
@@ -36,11 +36,13 @@
   	space = Space.first(:id => booking.space_id) %>
     <div class="content_box" style="height: 270px">
   <div class="inner">
-    <p>Booking ID: <%=booking.id%> </p>
-    <p>Space: <%= space.name %></p>
-    <p>Date from: <%=booking.from_date %></p>
-    <p>Date to: <%=booking.to_date %></p>
-    <p>Created on: <%=booking.created_on %></p>
+    Booking ID: <%=booking.id%><br>
+    Space: <%= space.name %><br>
+    Date from: <%= format_date(booking.from_date.to_s) %><br>
+    Date to: <%= format_date(booking.to_date.to_s) %><br>
+    Price per night: £<%= format_price(space.price_per_night) %><br>
+    Cost: £<%= format_price(cost_of_space(booking.from_date.to_s, booking.to_date.to_s, space.price_per_night))%><br>
+    Created on: <%= format_date(booking.created_on.to_s) %><br>
     <% if booking.hired %>
        <p> Hired: confirmed</p>
     <% else %>
@@ -59,7 +61,7 @@
   <div class="content_box" style="height: 270px" >
 <div class="inner">
     <% space = space_data(request.space_id) %>
-   
+
       Request ID <%= request.id %><br>
       <% if !able_to_book(request.space_id) && !request.hired%>DATES TAKEN<br><%end%>
       Space: <%= space.name %><br>
@@ -81,11 +83,10 @@
           <input type='submit' name="validate" value='deny' class="btn btn-primary btn-primary-spacing">
         <% end %>
       </form>
-     
+
     </div>
     </div>
   <% end %>
 </div>
 </div>
 </div>
-
