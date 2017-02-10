@@ -56,8 +56,6 @@ end
 
       within('#myspaces') do
         expect(page).to have_content("Home")
-        expect(page).to have_content("Amazing place")
-        expect(page).to have_content("£4.50")
         expect(page).to have_selector("input[type=submit][value='Update my Space']")
       end
 
