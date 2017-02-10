@@ -9,7 +9,7 @@
   <% if !spaces.nil? %>
     <% spaces.each do |user_space| %>
 
-      <div class="container" style="border:black solid 2px">
+      <div class="content_box">
 
       <li id="user_space-<%= user_space.id%>">
         <span class="name"><%= user_space.name %></span>
@@ -34,13 +34,10 @@
 </ul>
 
 
-</div>
-<div style="border:black solid 2px;width: 31%;float:left;margin-left: 15%;padding: 10px;" display="inline-block">
-
-<h3 align="center">Requests Made</h3>
+<div class="container page_box" style="float:left; width:45%; margin-left:25px; margin-bottom:20px">
 <% @bookings.each do |booking|
 	space = Space.first(:id => booking.space_id) %>
-  <div class="container" style="border:black solid 2px; width: 90%">
+	<div class="content_box" >
 		<p><%=booking.id%> </p>
 		<p><%= space.name %></p>
 		<p><%=booking.from_date %></p>
@@ -52,13 +49,11 @@
 			<p>Unconfirmed</p>
 		<%end%>
 </div><br><br>
-
 <% end %>
 </div>
-
-<div style="border:black solid 2px;width: 31%;float:right; margin-right: 15%;padding: 10px;" display="inline-block">
-<h3 align="center">Requests Received</h3>
+<div div class="container page_box" style="float:right; width:45%; margin-right:25px; margin-bottom:20px">
 <% @my_booking_request.each do |request| %>
+	<div class="content_box" >
 	<% space = space_data(request.space_id) %>
 <div class="container" style="border:black solid 2px; width: 90%">
 	Request ID <%= request.id %><br>
@@ -82,7 +77,9 @@
 			<input type='submit' name="validate" value='deny' class="btn btn-primary btn-primary-spacing">
 		<% end %>
 	</form>
+	</div>
 	<br>
 </div><br><br>
 <% end %>
+</div>
 </div>
