@@ -21,6 +21,7 @@
 
 ## <a name="Technologies">Technologies</a>
 * Ruby
+* Rspec
 * Sinatra
 * Javascript
 * Jquery
