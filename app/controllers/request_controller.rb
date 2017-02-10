@@ -3,39 +3,30 @@ class Server < Sinatra::Base
   post '/request/new' do
     from_date = params[:startdate]
     to_date = params[:enddate]
-    @booking = Booking.create(from_date: from_date,
-                  to_date: to_date,
-                  hired: false,
-                  created_on: Time.new,
-                  user_id: session[:user_id],
-                  space_id: session[:request_id])
-    if @booking.save
-      redirect to '/request'
+    if valid_date_range(from_date.to_s, to_date.to_s)
+      @booking = Booking.create(from_date: from_date,
+                    to_date: to_date,
+                    hired: false,
+                    created_on: Time.new,
+                    user_id: session[:user_id],
+                    space_id: session[:request_id])
+      if @booking.save
+        redirect to '/dashboard'
+      else
+        flash.now[:errors] = @booking.errors.full_messages
+        redirect to '/users/new'
+      end
     else
-      flash.now[:errors] = @booking.errors.full_messages
-      redirect to '/users/new'
+      flash.now[:errors] = "Invalid date range"
+      redirect to '/spaces/'
     end
   end
 
-  get '/request' do
-    if logged_in?
-      my_spaces_ids = []
-      @bookings = Booking.all(:user_id => session[:user_id])
-      @spaces = Space.all(:user_id => session[:user_id])
-      @spaces.each do |space|
-      my_spaces_ids << space.id
-      end
-      @my_booking_request = Booking.all(:space_id => my_spaces_ids)
-      erb :'request/index'
-    else 
-      redirect '/sessions/new'
-    end
-  end
 
   post '/request/validate' do
     if params[:validate]!="deny"
       confirm_booking(params[:request_id].to_i)
-      redirect to '/request'
+      redirect to '/dashboard'
     else
       # TODO: Deny request
     end

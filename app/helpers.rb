@@ -7,6 +7,10 @@ module Helpers
     DateTime.parse(date).strftime('%d-%m-%Y')
   end
 
+  def format_date_american(date)
+    date.strftime('%Y-%m-%d').to_s
+  end
+
   def format_price(price)
     '%.2f' % price
   end
@@ -60,4 +64,9 @@ module Helpers
     !current_user.nil?
   end
 
+  def valid_date_range(from, to)
+    return false if from == "" || to == ""
+    return false if format_date(from) > format_date(to)
+    true
+  end
 end

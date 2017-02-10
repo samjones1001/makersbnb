@@ -41,8 +41,8 @@ end
     scenario 'user1 cannot edit user2 listed spaces' do
 
       sign_in(email: 'test@test.com', password: 'password')
-      visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      visit('/dashboard')
+      within('#myspaces') do
         expect(page).to_not have_content("Big Home")
         expect(page).to_not have_content("More amazing place")
         expect(page).to_not have_content("£10.50")
@@ -52,9 +52,9 @@ end
     scenario 'user can see a list of his/her listed spaces with a button to update' do
 
       sign_in(email: 'test@test.com', password: 'password')
-      visit('/request')
+      visit('/dashboard')
 
-      within('ul#myspaces li:nth-child(1)') do
+      within('#myspaces') do
         expect(page).to have_content("Home")
         expect(page).to have_content("Amazing place")
         expect(page).to have_content("£4.50")
@@ -66,8 +66,8 @@ end
     scenario 'user can see a listing update form with existing data pre-populated' do
 
       sign_in(email: 'test@test.com', password: 'password')
-      visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      visit('/dashboard')
+      within('#myspaces') do
         click_button 'Update my Space'
       end
 
@@ -80,8 +80,8 @@ end
     scenario 'user can update name, description, price_per_night and available dates' do
 
       sign_in(email: 'test@test.com', password: 'password')
-      visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      visit('/dashboard')
+      within('#myspaces') do
         click_button 'Update my Space'
       end
 
@@ -102,8 +102,8 @@ end
     scenario 'user can remove unwanted available dates' do
 
       sign_in(email: 'test@test.com', password: 'password')
-      visit('/request')
-      within('ul#myspaces li:nth-child(1)') do
+      visit('/dashboard')
+      within('#myspaces') do
         click_button 'Update my Space'
       end
 

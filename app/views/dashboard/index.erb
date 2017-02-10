@@ -1,0 +1,81 @@
+<form action='/spaces/new'>
+  <input type="submit" name="submit" class="btn btn-primary btn-primary-spacing" value="Create a Space">
+</form>
+
+<div class="container">
+  <h3 align="center">My Listed Spaces</h3>
+  <ul id='myspaces'>
+    <%spaces = user_spaces%>
+    <% if !spaces.nil? %>
+      <% spaces.each do |user_space| %>
+
+        <div class="container" style="border:black solid 2px">
+
+        <div id="user_space-<%= user_space.id%>">
+          <span class="name">Name: <%= user_space.name %></span><br>
+          <span class="description">Description: <%= user_space.description %></span><br>
+          <span class="price_per_night">Price per night: £<%= format_price(user_space.price_per_night) %></span><br>
+
+          <form action='/spaces/edit' method="post">
+            <input type="hidden", name="spaceid" value="<%= user_space.id %>">
+            <input type="hidden", name="name" value="<%= user_space.name %>">
+            <input type="hidden", name="description" value="<%= user_space.description %>">
+            <input type="hidden", name="price_per_night" value="<%= format_price(user_space.price_per_night) %>">
+            <input type="hidden", name="available_from" value="<%= user_space.start_date %>">
+            <input type="hidden", name="available_to" value="<%= user_space.end_date %>">
+            <input type="submit" name="submit" class="btn btn-primary btn-primary-spacing" value="Update my Space">
+          </form>
+        </div><br>
+      </div><br><br>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div style="border:black solid 2px;width: 31%;float:left;margin-left: 15%;padding: 10px;" display="inline-block">
+  <h3 align="center">Requests Made</h3>
+  <% @bookings.each do |booking|
+  	space = Space.first(:id => booking.space_id) %>
+    <div class="container" style="border:black solid 2px; b‌​ackground-color: #00FF00 ; width: 90%">
+      Space: <%= space.name %><br>
+      From: <%= format_date(booking.from_date.to_s) %><br>
+      To: <%= format_date(booking.to_date.to_s) %><br>
+      Price per night: £<%= format_price(space.price_per_night) %><br>
+      Cost £<%= format_price(cost_of_space(booking.from_date.to_s, booking.to_date.to_s, space.price_per_night))%><br>
+      Created: <%= format_date(booking.created_on.to_s) %><br>
+      Booking: <% if booking.hired %>Confirmed<% else %>Unconfirmed<%end%><br>
+    </div><br><br>
+  <% end %>
+</div>
+
+<div style="border:black solid 2px;width: 31%;float:right; margin-right: 15%;padding: 10px;" display="inline-block">
+  <h3 align="center">Requests Received</h3>
+  <% @my_booking_request.each do |request| %>
+    <% space = space_data(request.space_id) %>
+    <div class="container" style="border:black solid 2px; width: 90%">
+      Request ID <%= request.id %><br>
+      <% if !able_to_book(request.space_id) && !request.hired%>DATES TAKEN<br><%end%>
+      Space name <%= space.name %><br>
+      Date from <%= format_date(request.from_date.to_s) %><br>
+      Date to <%= format_date(request.to_date.to_s) %><br>
+      Cost per night £<%= format_price(space.price_per_night) %><br>
+      Cost £<%= format_price(cost_of_space(request.from_date.to_s, request.to_date.to_s, space.price_per_night))%><br>
+      User Name <%= user_data(request.user_id).name %> <br>
+      User Email <%= user_data(request.user_id).email %> <br>
+      Confirmed:
+      <% if request.hired %>confirmed<%else%>unconfirmed<%end%>
+
+      <form action='/request/validate' method='post'>
+        <input type='hidden' name='request_id' value='<%=request.id%>'>
+        <% if able_to_book(request.space_id) %>
+          <input type='submit' name="validate" value='confirm' class="btn btn-primary btn-primary-spacing">
+        <% end %>
+        <% if request.hired==false %>
+          <input type='submit' name="validate" value='deny' class="btn btn-primary btn-primary-spacing">
+        <% end %>
+      </form>
+      <br>
+    </div>
+    <br><br>
+  <% end %>
+</div>

@@ -7,19 +7,19 @@
 
 <div style="border:black solid 2px;width: 31%;float:left;margin-left: 15%;padding: 10px;" display="inline-block">
 <p>Old Details:</p>
-Name: <%= @space_name_old %><br>
-Description: <%= @space_description_old %><br>
-Price per night: £<%= format_price(@space_price_per_night_old) %>
-Available From: <%= @space_available_from_old %><br>
-Available To: <%= @space_available_to_old %><br>
+Name: <%= @space_old.name %><br>
+Description: <%= @space_old.description %><br>
+Price per night: £<%= format_price(@space_old.price_per_night) %>
+Available From: <%= @space_old.start_date %><br>
+Available To: <%= @space_old.end_date %><br>
 </div>
 
 <div style="border:black solid 2px;width: 31%;float:right; margin-right: 15%;padding: 10px;" display="inline-block">
 <p>New Details:</p>
-Name: <%= @space_name_new %><br>
-Description: <%= @space_description_new %><br>
-Price per Night: £<%= format_price(@space_price_per_night_new) %>
-Available From: <%= @space_available_from_new %><br>
-Available To: <%= @space_available_to_new %><br>
+Name: <%= @space_new.name %><br>
+Description: <%= @space_new.description %><br>
+Price per Night: £<%= format_price(@space_new.price_per_night) %>
+Available From: <%= @space_new.start_date %><br>
+Available To: <%= @space_new.end_date %><br>
 </div>
 </div>

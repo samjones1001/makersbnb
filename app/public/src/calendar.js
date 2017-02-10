@@ -20,7 +20,7 @@ $(window).load(function()
 		$('#enddate').val("")
 	} else {
 		calendar = setUpCalendar(dateArray,convertDate($('#user_end_date').val()))
-		$('#enddate').val($('#user_end_date').val())		
+		$('#enddate').val($('#user_end_date').val())
 	}
 	$('#enddate').glDatePicker(calendar);
 });
