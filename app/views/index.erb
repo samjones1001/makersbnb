@@ -1,4 +1,8 @@
-<div class="container">
+<div class="container page_box">
+
+<div class="content_box index_right">
+<div class="inner">
+<h4>Search for spaces by available date</h4>
   <form action='/spaces/search' method='post' >
     <label for='start_date'>
       Start date: <input name='start_date' type='date' value='<%=format_date_american(DateTime.now)%>' class="form-control">
@@ -8,14 +12,20 @@
     </label>
     <input type="submit" value="Show Spaces" class="btn btn-primary btn-primary-spacing">
   </form>
+  </div>
+</div>
 
-  <h1> Available Spaces </h1><br>
+
+<div class = 'index_left'>
+  <h1 style='margin-left:40px; margin-top:-20px'> Available Spaces </h1>
+  <div style=" overflow-y: scroll; height:340px">
   <% if session[:start_date] != nil %>
     Searching for spaces on the dates<br>
     <%= format_date(session[:start_date]) %> to <%= format_date(session[:end_date]) %><br>
   <% end %>
 
   <% @spaces.each do |space| %>
+
     <% if session[:start_date] != nil
          @dates = Availabledate.all(:space_id => space.id, :date => @date_range, :available => true)
        else
@@ -23,8 +33,11 @@
        end
        if !@dates.empty? || session[:start_date] == nil %>
 
-       <div class="container" style="border:black solid 2px">
-        <%= space.name %><br>
+       <div class="content_box inner_el">
+       
+        <div class="pictureframe"></div>
+        <div class="index_content">
+         <%= space.name %><br>
         <%= space.description[0..20] %>...<br>
         £<%= format_price(space.price_per_night) %><br>
 
@@ -33,7 +46,11 @@
           <input type="submit" name="submit" value="View Space" class="btn btn-primary btn-primary-spacing">
         </form>
         </div>
-        <br><br>
+        </div>
+       
     <% end %>
   <% end %>
 </div>
+</div>
+</div>
+

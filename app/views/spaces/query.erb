@@ -5,10 +5,10 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="../src/glDatePicker.min.js"></script>
 <script src="../src/calendar.js"></script>
-
+<div class="container page_box">
 <h3 align="center">Selected Space</h3>
 <div class="container">
-  <div class="container" style="border:black solid 2px">
+  <div class="container" >
     <div class="container" align="center">
       Name: <%= @space.name %><br>
       Description: <%= @space.description %><br>
@@ -45,4 +45,5 @@
     <input type='hidden' id="user_start_date" value="<%=session[:start_date]%>">
     <input type='hidden' id="user_end_date" value="<%=session[:end_date]%>">
   </div>
+</div>
 </div>
