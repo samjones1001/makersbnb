@@ -99,10 +99,10 @@ I want a posting to remain available until I confirm a hire request
 ### Sign Up Screen
 [![ScreenShot2](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png "Screen Shot 2")
 
-### Sign Up Screen
+### Request Space
 [![ScreenShot3](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png "Screen Shot 3")
 
-### Sign Up Screen
+### Dashboard
 [![ScreenShot4](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png "Screen Shot 4")
 
 ### Sign Up Screen
