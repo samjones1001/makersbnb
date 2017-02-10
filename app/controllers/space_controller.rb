@@ -39,29 +39,20 @@ class Server < Sinatra::Base
   end
 
   post '/spaces/update' do
-    @space_id = params[:spaceid].to_i
-    @space_name_new = params[:name]
-    @space_description_new = params[:description]
-    @space_price_per_night_new = params[:price_per_night].to_f
-    @space_available_from_new = params[:available_from]
-    @space_available_to_new = params[:available_to]
 
-    @space = Space.get(@space_id)
-    @space_name_old = @space.name
-    @space_description_old = @space.description
-    @space_price_per_night_old = @space.price_per_night
-    @space_available_from_old = @space.start_date
-    @space_available_to_old = @space.end_date
+    @space_old = Space.get(params[:spaceid].to_i)
 
-    date_range = @space_available_from_old..@space_available_to_old
-    old_available_dates = Availabledate.all(:space_id => @space_id, :date => date_range)
+    date_range = @space_old.start_date..@space_old.end_date
+    old_available_dates = Availabledate.all(:space_id => params[:spaceid].to_i, :date => date_range)
     old_available_dates.destroy
 
-    @space.update(:name => @space_name_new, :description => @space_description_new, :price_per_night => @space_price_per_night_new, :start_date => @space_available_from_new, :end_date => @space_available_to_new)
-    new_available_dates = (@space_available_from_new..@space_available_to_new)
+    @space_old.update(:name => params[:name], :description => params[:description], :price_per_night => params[:price_per_night].to_f, :start_date => params[:available_from], :end_date => params[:available_to])
+    new_available_dates = (params[:available_from]..params[:available_to])
     new_available_dates.each do |i|
-      Availabledate.create(date: i, available: true, space_id: @space_id)
+      Availabledate.create(date: i, available: true, space_id: params[:spaceid].to_i)
     end
+
+    @space_new = Space.get(params[:spaceid].to_i)
 
     erb(:'/spaces/update/confirm')
 
