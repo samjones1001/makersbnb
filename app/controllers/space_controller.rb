@@ -9,7 +9,7 @@ class Server < Sinatra::Base
   end
 
   get '/spaces/' do
-    session[:request_id] = params[:request].to_i if params[:request]=nil
+    session[:request_id] = params[:request].to_i if params[:request]==nil
     @space = Space.first(:id => session[:request_id])
     erb :'spaces/query'
   end
