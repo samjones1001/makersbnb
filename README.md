@@ -23,6 +23,9 @@ Headline specifications
 * [Paul Goodman] (https://github.com/thegooders)
 
 ## Outline
+This application - a lightweight AirBnB clone - was built as a one week group project.  After a short planning session session on the first day, we split into pairs or small groups and worked independently on different areas of the application.  We used [Waffle.io](https://waffle.io/) to keep track of GitHub issues and tried to simulate a real world development workflow - a pair would submit the code they had worked on, then another pair would conduct a code review and ship it to production.
+
+As a group, we worked according to Agile methodologies, holding daily stand ups and retros, and tried to adhere to [XP values](http://www.extremeprogramming.org/values.html).
 
 ## Database Schema
 [![DatabaseSchema](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png "Database Chema")
@@ -34,9 +37,9 @@ Headline specifications
 [![ScreenShot2](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png "Screen Shot 2")
 ### Request Space
 [![ScreenShot3](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png "Screen Shot 3")
-### Dashboard
+### List Space
 [![ScreenShot4](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png "Screen Shot 4")
-### Sign Up Screen
+### Dashboard
 [![ScreenShot5](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot5.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot5.png "Screen Shot 5")
 
 ## User Stories
