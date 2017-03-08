@@ -1,5 +1,19 @@
-# Makers BnB
-### [Makers Academy] (http://www.makersacademy.com) - Week 6 Group Project
+## MakersBnB
+#### Technologies: Ruby, JavaScript, jQuery, Sinatra, PostgreSQL, DataMapper, RSpec, Capybara 
+### Week 6 group project for [Makers Academy] (http://www.makersacademy.com)
+[Team Members](#team-members) | [Outline](#outline) | [Database Schema](#database-schema) | [Screenshots](#screenshots) | [User Stories](#user-stories) | [Gems](#gems) | [Usage Instructions](#usage-instructions) | [Heroku](https://makersbestbnb.herokuapp.com/)
+
+## Brief
+We would like a web application that allows users to list spaces they have available, and to hire spaces for the night.
+Headline specifications
+
+ * Any signed-up user can list a new space.
+ * Users can list multiple spaces.
+ * Users should be able to name their space, provide a short description of the space, and a price per night.
+ * Users should be able to offer a range of dates where their space is available.
+ * Any signed-up user can request to hire any space for one night, and this should be approved by the user that owns that space.
+ * Nights for which a space has already been booked should not be available for users to book that space.
+ * Until a user has confirmed a booking request, that space can still be booked for that night.
 
 ## Team Members
 * [Adrian Eyre] (https://github.com/adrianeyre)
@@ -8,54 +22,24 @@
 * [Justin Butwell] (https://github.com/Justinio14)
 * [Paul Goodman] (https://github.com/thegooders)
 
-## Index
-* [Task] (#Task)
-* [Technologies] (#Technologies)
-* [Installation] (#Install)
-* [User Stories] (#Stories)
-* [Database Schema] (#Database)
-* [Screen Shots] (#Shots)
-* [Live on Heroku] (#Heroku)
+## Outline
 
-## <a name="Task">Task</a>
-We would like a web application that allows users to list spaces they have available, and to hire spaces for the night.
+## Database Schema
+[![DatabaseSchema](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png "Database Chema")
 
-### Headline specifications
+## Screenshots
+### Main Screen
+[![ScreenShot1](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot1.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot1.png "Screen Shot 1")
+### Sign Up Screen
+[![ScreenShot2](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png "Screen Shot 2")
+### Request Space
+[![ScreenShot3](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png "Screen Shot 3")
+### Dashboard
+[![ScreenShot4](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png "Screen Shot 4")
+### Sign Up Screen
+[![ScreenShot5](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot5.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot5.png "Screen Shot 5")
 
-- Any signed-up user can list a new space.
-- Users can list multiple spaces.
-- Users should be able to name their space, provide a short description of the space, and a price per night.
-- Users should be able to offer a range of dates where their space is available.
-- Any signed-up user can request to hire any space for one night, and this should be approved by the user that owns that space.
-- Nights for which a space has already been booked should not be available for users to book that space.
-- Until a user has confirmed a booking request, that space can still be booked for that night.
-
-## <a name="Technologies">Technologies</a>
-* Ruby
-* Rspec
-* Sinatra
-* Javascript
-* Jquery
-* Datamapper
-* [Waffle] (https://waffle.io/samjones1001/makersbnb)
-
-## <a name="Install">Installation</a>
-### To clone the repo
-```shell
-$ git clone https://github.com/samjones1001/makersbnb
-$ cd makersbnb
-```
-### Rspec Tests
-```shell
-$ respec
-```
-### Sinatra
-``` shell
-$ ruby app/app.rb
-$ open -a safari localhost:4567
-```
-
-## <a name="Stories">User Stories</a>
+## User Stories
 ```
 As a user
 So that I can use MakersBnB
@@ -90,25 +74,38 @@ So that I can manage hire requests
 I want a posting to remain available until I confirm a hire request 
 ```
 
-## <a name="Database">Database Schema</a>
-[![DatabaseSchema](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/DatabaseSchema.png "Database Chema")
+## Gems
+```ruby
+gem 'sinatra'
+gem 'sinatra-flash'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
+gem 'rake'
 
-## <a name="Shots">Screen Shots</a>
-### Main Screen
-[![ScreenShot1](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot1.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot1.png "Screen Shot 1")
+group :test do
+  gem 'byebug'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'rspec'
+  gem 'rspec-sinatra'
+  gem 'selenium-webdriver'
+end
+```
 
-### Sign Up Screen
-[![ScreenShot2](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot2.png "Screen Shot 2")
-
-### Request Space
-[![ScreenShot3](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot3.png "Screen Shot 3")
-
-### Dashboard
-[![ScreenShot4](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot4.png "Screen Shot 4")
-
-### Sign Up Screen
-[![ScreenShot5](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot5.png)](https://raw.githubusercontent.com/samjones1001/makersbnb/master/images/screenshot5.png "Screen Shot 5")
-
-
-## <a name="Heroku">Live on Heroku</a>
-[https://makersbestbnb.herokuapp.com/] (https://makersbestbnb.herokuapp.com/)
+## Usage Instructions
+* clone the repo and run bundle
+```shell
+$ git clone https://github.com/samjones1001/makersbnb
+$ cd makersbnb
+$ rvm 2.3.3
+$ bundle
+```
+* run tests
+```shell
+$ rspec
+```
+* start up sinatra
+```shell
+$ ruby app.rb
+```
+* in your browser, navigate to http://localhost:4567/ 
